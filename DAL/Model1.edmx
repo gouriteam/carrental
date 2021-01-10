@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="rentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="adname" Type="varchar" MaxLength="20" />
+          <Property Name="adpwd" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="bookingid" />
+          </Key>
+          <Property Name="bookingid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="custid" Type="varchar" MaxLength="20" />
+          <Property Name="carid" Type="varchar" MaxLength="20" />
+          <Property Name="driverid" Type="varchar" MaxLength="20" />
+          <Property Name="startdate" Type="date" />
+          <Property Name="enddate" Type="date" />
+          <Property Name="totalprice" Type="float" />
+          <Property Name="fromroute" Type="varchar" MaxLength="20" />
+          <Property Name="toroute" Type="varchar" MaxLength="20" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="driver">
+          <Key>
+            <PropertyRef Name="driverid" />
+          </Key>
+          <Property Name="driverid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="drivername" Type="varchar" MaxLength="20" />
+          <Property Name="phonenum" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="bookingid" Type="varchar" MaxLength="20" />
+          <Property Name="comments" Type="varchar" MaxLength="20" />
+          <Property Name="rating" Type="int" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="custname" Type="varchar" MaxLength="20" />
+          <Property Name="pwd" Type="varchar" MaxLength="20" />
+          <Property Name="gender" Type="varchar" MaxLength="10" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="phonenum" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="vehicles">
+          <Key>
+            <PropertyRef Name="carid" />
+          </Key>
+          <Property Name="carid" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="20" />
+          <Property Name="capacity" Type="int" />
+          <Property Name="ACtype" Type="varchar" MaxLength="20" />
+          <Property Name="rentperday" Type="float" />
+          <Property Name="fuelmode" Type="varchar" MaxLength="10" />
+          <Property Name="images" Type="varchar" MaxLength="20" />
+          <Property Name="available" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__booking__carid__3F466844">
+          <End Role="vehicles" Type="Self.vehicles" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicles">
+              <PropertyRef Name="carid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="carid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__custid__3E52440B">
+          <End Role="registration" Type="Self.registration" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registration">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="custid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__driveri__403A8C7D">
+          <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="driver">
+              <PropertyRef Name="driverid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="driverid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__feedback__bookin__440B1D61">
+          <End Role="booking" Type="Self.booking" Multiplicity="0..1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="bookingid" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="bookingid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rentalModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="driver" EntityType="Self.driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="feedback" EntityType="Self.feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="registration" EntityType="Self.registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vehicles" EntityType="Self.vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__booking__carid__3F466844" Association="Self.FK__booking__carid__3F466844">
+            <End Role="vehicles" EntitySet="vehicles" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__custid__3E52440B" Association="Self.FK__booking__custid__3E52440B">
+            <End Role="registration" EntitySet="registration" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__driveri__403A8C7D" Association="Self.FK__booking__driveri__403A8C7D">
+            <End Role="driver" EntitySet="driver" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedback__bookin__440B1D61" Association="Self.FK__feedback__bookin__440B1D61">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="feedback" EntitySet="feedback" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="adminid" />
+          </Key>
+          <Property Name="adminid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="adname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="adpwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="bookingid" />
+          </Key>
+          <Property Name="bookingid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="carid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="driverid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="startdate" Type="DateTime" Precision="0" />
+          <Property Name="enddate" Type="DateTime" Precision="0" />
+          <Property Name="totalprice" Type="Double" />
+          <Property Name="fromroute" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="toroute" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="vehicle" Relationship="Self.FK__booking__carid__3F466844" FromRole="booking" ToRole="vehicles" />
+          <NavigationProperty Name="registration" Relationship="Self.FK__booking__custid__3E52440B" FromRole="booking" ToRole="registration" />
+          <NavigationProperty Name="driver" Relationship="Self.FK__booking__driveri__403A8C7D" FromRole="booking" ToRole="driver" />
+          <NavigationProperty Name="feedbacks" Relationship="Self.FK__feedback__bookin__440B1D61" FromRole="booking" ToRole="feedback" />
+        </EntityType>
+        <EntityType Name="driver">
+          <Key>
+            <PropertyRef Name="driverid" />
+          </Key>
+          <Property Name="driverid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="drivername" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="phonenum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__driveri__403A8C7D" FromRole="driver" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookingid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <NavigationProperty Name="booking" Relationship="Self.FK__feedback__bookin__440B1D61" FromRole="feedback" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="registration">
+          <Key>
+            <PropertyRef Name="custid" />
+          </Key>
+          <Property Name="custid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="custname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="phonenum" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__custid__3E52440B" FromRole="registration" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="carid" />
+          </Key>
+          <Property Name="carid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="capacity" Type="Int32" />
+          <Property Name="ACtype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rentperday" Type="Double" />
+          <Property Name="fuelmode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="images" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="available" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="bookings" Relationship="Self.FK__booking__carid__3F466844" FromRole="vehicles" ToRole="booking" />
+        </EntityType>
+        <Association Name="FK__booking__carid__3F466844">
+          <End Role="vehicles" Type="Self.vehicle" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicles">
+              <PropertyRef Name="carid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="carid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__custid__3E52440B">
+          <End Role="registration" Type="Self.registration" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="registration">
+              <PropertyRef Name="custid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="custid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__booking__driveri__403A8C7D">
+          <End Role="driver" Type="Self.driver" Multiplicity="0..1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="driver">
+              <PropertyRef Name="driverid" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="driverid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__feedback__bookin__440B1D61">
+          <End Role="booking" Type="Self.booking" Multiplicity="0..1" />
+          <End Role="feedback" Type="Self.feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="bookingid" />
+            </Principal>
+            <Dependent Role="feedback">
+              <PropertyRef Name="bookingid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="bookings" EntityType="Self.booking" />
+          <EntitySet Name="drivers" EntityType="Self.driver" />
+          <EntitySet Name="feedbacks" EntityType="Self.feedback" />
+          <EntitySet Name="registrations" EntityType="Self.registration" />
+          <EntitySet Name="vehicles" EntityType="Self.vehicle" />
+          <AssociationSet Name="FK__booking__carid__3F466844" Association="Self.FK__booking__carid__3F466844">
+            <End Role="vehicles" EntitySet="vehicles" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__custid__3E52440B" Association="Self.FK__booking__custid__3E52440B">
+            <End Role="registration" EntitySet="registrations" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__booking__driveri__403A8C7D" Association="Self.FK__booking__driveri__403A8C7D">
+            <End Role="driver" EntitySet="drivers" />
+            <End Role="booking" EntitySet="bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__feedback__bookin__440B1D61" Association="Self.FK__feedback__bookin__440B1D61">
+            <End Role="booking" EntitySet="bookings" />
+            <End Role="feedback" EntitySet="feedbacks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="rentalModelStoreContainer" CdmEntityContainer="rentalEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="rentalModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="adname" ColumnName="adname" />
+                <ScalarProperty Name="adpwd" ColumnName="adpwd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookings">
+            <EntityTypeMapping TypeName="rentalModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="carid" ColumnName="carid" />
+                <ScalarProperty Name="driverid" ColumnName="driverid" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="enddate" ColumnName="enddate" />
+                <ScalarProperty Name="totalprice" ColumnName="totalprice" />
+                <ScalarProperty Name="fromroute" ColumnName="fromroute" />
+                <ScalarProperty Name="toroute" ColumnName="toroute" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="drivers">
+            <EntityTypeMapping TypeName="rentalModel.driver">
+              <MappingFragment StoreEntitySet="driver">
+                <ScalarProperty Name="driverid" ColumnName="driverid" />
+                <ScalarProperty Name="drivername" ColumnName="drivername" />
+                <ScalarProperty Name="phonenum" ColumnName="phonenum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbacks">
+            <EntityTypeMapping TypeName="rentalModel.feedback">
+              <MappingFragment StoreEntitySet="feedback">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="registrations">
+            <EntityTypeMapping TypeName="rentalModel.registration">
+              <MappingFragment StoreEntitySet="registration">
+                <ScalarProperty Name="custid" ColumnName="custid" />
+                <ScalarProperty Name="custname" ColumnName="custname" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="phonenum" ColumnName="phonenum" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicles">
+            <EntityTypeMapping TypeName="rentalModel.vehicle">
+              <MappingFragment StoreEntitySet="vehicles">
+                <ScalarProperty Name="carid" ColumnName="carid" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="ACtype" ColumnName="ACtype" />
+                <ScalarProperty Name="rentperday" ColumnName="rentperday" />
+                <ScalarProperty Name="fuelmode" ColumnName="fuelmode" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="available" ColumnName="available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
