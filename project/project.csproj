@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +103,9 @@
     <Content Include="Views\web.config" />
     <Content Include="libman.json" />
     <None Include="packages.config" />
+    <Content Include="Views\shared\Sitemaster1.cshtml" />
+    <Content Include="Views\Admin\Homepage.cshtml" />
+    <Content Include="Views\Admin\AddVehicle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +115,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blogic\Blogic.csproj">
+      <Project>{8b07a029-e6a1-4acd-9006-91a159b6f393}</Project>
+      <Name>Blogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessEntity\BusinessEntity.csproj">
+      <Project>{c221d868-612b-4063-a49d-344b029e01ec}</Project>
+      <Name>BusinessEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

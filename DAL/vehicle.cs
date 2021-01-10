@@ -22,9 +22,9 @@ namespace DAL
     
         public string carid { get; set; }
         public string model { get; set; }
-        public Nullable<int> capacity { get; set; }
+        public int capacity { get; set; }
         public string ACtype { get; set; }
-        public Nullable<double> rentperday { get; set; }
+        public double rentperday { get; set; }
         public string fuelmode { get; set; }
         public string images { get; set; }
         public string available { get; set; }

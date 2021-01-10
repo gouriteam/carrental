@@ -1,0 +1,44 @@
+﻿@model BusinessEntity.VehiclesBE
+@{
+    ViewBag.Title = "AddVehicle";
+    Layout = "~/Views/shared/Sitemaster1.cshtml";
+}
+
+<h2>Addcar</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td><label> Enter Car Model</label></td>
+            <td>@Html.TextBoxFor(a => a.model)</td>
+        </tr>
+        <tr>
+            <td><label> Enter Actype </label></td>
+            <td>@Html.TextBoxFor(a => a.ACtype)</td>
+        </tr>
+        <tr>
+            <td><label> Enter Car Capacity </label></td>
+            <td>@Html.TextBoxFor(a => a.capacity)</td>
+        </tr>
+        <tr>
+            <td><label> Enter Fuel Mode </label></td>
+            <td>@Html.TextBoxFor(a => a.fuelmode)</td>
+        </tr>
+        <tr>
+            <td><label> Enter Car Images </label></td>
+            <td>@Html.TextBoxFor(a => a.images)</td>
+        </tr>
+        <tr>
+            <td><label> Enter  Charges for RentPerDay </label></td>
+            <td>@Html.TextBoxFor(a => a.rentperday)</td>
+        </tr>
+        <tr>
+            <td><label> Enter  Availability status </label></td>
+            <td>@Html.TextBoxFor(a => a.available)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form>
+@ViewData["a"]
