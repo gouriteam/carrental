@@ -15,5 +15,9 @@ namespace Blogic
         {
             return ob.Addcar(a);
         }
+        public int newbooking(bookingBE b)
+        {
+            return ob.newbooking(b);
+        }
     }
 }

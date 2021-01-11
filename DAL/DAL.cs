@@ -37,5 +37,62 @@ namespace DAL
 
         }
 
+        public int newbooking(bookingBE b)
+        {
+            
+            string bookingid;
+            var lastbooking = ob.bookings.OrderByDescending(c => c.bookingid).FirstOrDefault();
+            if (lastbooking == null)
+            {
+                bookingid = "B00000";
+            }
+            else
+            {
+                bookingid = "B" + (Convert.ToInt32(lastbooking.bookingid.Substring(1, 5)) + 1).ToString();
+            }
+
+
+            var res = (from t in ob.vehicles
+                      where t.available == "yes"
+                      select t).Count();
+            if(res>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            var start = b.startdate;
+            var end = b.enddate;
+
+            var a = start.Date;
+            var k = end.Date;
+            int n = Convert.ToInt32(a) - Convert.ToInt32(k);
+
+            //int rentperday = null;
+            //var r = rentperday;
+            //var totalprice = n * r;
+
+            booking bi = new booking()
+            {
+
+                bookingid = bookingid,
+                custid = b.custid,
+                carid = b.carid,
+                driverid = b.driverid,
+                startdate = b.startdate,
+                enddate = b.enddate,
+                //totalprice =n*,
+                fromroute = b.fromroute,
+                toroute = b.toroute,
+                status = b.status
+
+
+            };
+            ob.bookings.Add(bi);
+            return ob.SaveChanges();
+
+        }
     }
 }

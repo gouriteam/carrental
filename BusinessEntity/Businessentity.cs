@@ -19,5 +19,21 @@ namespace BusinessEntity
             public string available { get; set; }
 
            }
- }
+    public class bookingBE
+    {
+
+        public string bookingid { get; set; }
+        public string custid { get; set; }
+        public string carid { get; set; }
+        public string driverid { get; set; }
+        public DateTime startdate { get; set; }
+        public DateTime enddate { get; set; }
+        public double totalprice { get; set; }
+        public string fromroute { get; set; }
+        public string toroute { get; set; }
+        public bool status { get; set; }
+
+
+    }
+}
 

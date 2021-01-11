@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\customerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -113,6 +114,8 @@
     <Content Include="Views\shared\Sitemaster1.cshtml" />
     <Content Include="Views\Admin\Homepage.cshtml" />
     <Content Include="Views\Admin\AddVehicle.cshtml" />
+    <Content Include="Views\customer\Home.cshtml" />
+    <Content Include="Views\customer\booking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
