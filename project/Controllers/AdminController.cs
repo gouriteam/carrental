@@ -33,5 +33,23 @@ namespace project.Controllers
             }
             return View();
         }
+        public ActionResult AddDriver()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddDriver(driverBE e)
+        {
+            int res = ob.Adddriver(e);
+            if (res > 0)
+            {
+                ViewData["b"] = " Driver is assigned";
+            }
+            else
+            {
+                ViewData["b"] = " Driver Cannot be Assigned";
+            }
+            return View();
+        }
     }
 }
