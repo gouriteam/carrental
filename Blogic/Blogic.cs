@@ -15,9 +15,5 @@ namespace Blogic
         {
             return ob.Addcar(a);
         }
-        public int Adddriver(driverBE e)
-        {
-            return ob.Adddriver(e);
-        }
     }
 }
