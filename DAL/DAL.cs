@@ -36,26 +36,27 @@ namespace DAL
             return ob.SaveChanges();
 
         }
-        public int Adddriver(driverBE e)         
-        {
-            string driveridd;
-            var lastdriv = ob.drivers.OrderByDescending(c => c.driverid).FirstOrDefault();
-            if (lastdriv == null)
-            {
-                driveridd = "DR10000";
-            }
-            else
-            {
-                driveridd = "DR" + (Convert.ToInt32(lastdriv.driverid.Substring(2, 5)) + 1).ToString();
-            }
-            driver k = new driver()
-            {
-                driverid = driveridd,
-                drivername = e.drivername,
-                phonenum = e.phonenum
-            };
-            ob.drivers.Add(k);
-            return ob.SaveChanges();
-        }
+        //public int Adddriver(driverBE e)         
+        //{
+            
+        //    string driveridd;
+        //    var lastdriv = ob.drivers.OrderByDescending(c => c.driverid).FirstOrDefault();
+        //    if (lastdriv == null)
+        //    {
+        //        driveridd = "DR10000";
+        //    }
+        //    else
+        //    {
+        //        driveridd = "DR" + (Convert.ToInt32(lastdriv.driverid.Substring(2, 5)) + 1).ToString();
+        //    }
+        //    driver k = new driver()
+        //    {
+        //        driverid = driveridd,
+        //        drivername = e.drivername,
+        //        phonenum = e.phonenum
+        //    };
+        //    ob.drivers.Add(k);
+        //    return ob.SaveChanges();
+        //}
     }
 }
