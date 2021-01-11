@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessEntity;
 using Blogic;
+using System.IO;
 namespace project.Controllers
 {
     public class AdminController : Controller
@@ -23,15 +24,35 @@ namespace project.Controllers
         public ActionResult AddVehicle(VehiclesBE a)
         {
             int res = ob.Addcar(a);
-            if (res > 0)
-            {
-                ViewData["a"] = "Vehicle added Successfully";
+            
+                if (res > 0)
+                {
+                    ViewData["a"] = "Vehicle added Successfully";
+                }
+                else
+                {
+                    ViewData["a"] = "Cannot Add Vehicles";
+                }
+                return View();
             }
-            else
-            {
-                ViewData["a"] = "Cannot Add Vehicles";
-            }
-            return View();
-        }
+        
+        //public ActionResult AddDriver()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult AddDriver(driverBE e)
+        //{
+        //    int res = ob.Adddriver(e);
+        //    if (res > 0)
+        //    {
+        //        ViewData["b"] = " Driver is assigned";
+        //    }
+        //    else
+        //    {
+        //        ViewData["b"] = " Driver Cannot be Assigned";
+        //    }
+        //    return View();
+        //}
     }
 }

@@ -19,5 +19,9 @@ namespace Blogic
         {
             return ob.newbooking(b);
         }
+        //public int Adddriver(driverBE e)
+        //{
+        //    return ob.Adddriver(e);
+        //}
     }
 }

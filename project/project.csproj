@@ -116,6 +116,7 @@
     <Content Include="Views\Admin\AddVehicle.cshtml" />
     <Content Include="Views\customer\Home.cshtml" />
     <Content Include="Views\customer\booking.cshtml" />
+    <Content Include="Views\Admin\AddDriver.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -125,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
