@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BusinessEntity;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BusinessEntity;
 namespace DAL
 {
     public class DALLayer
@@ -39,5 +36,6 @@ namespace DAL
             return ob.SaveChanges();
 
         }
+
     }
 }
