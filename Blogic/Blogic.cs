@@ -15,5 +15,13 @@ namespace Blogic
         {
             return ob.Addcar(a);
         }
+
+        public int ValidateAdmin(string userid, string pwd)
+        {
+            return ob.ValidateAdmin(userid, pwd);
+        }
+
+
+
     }
 }

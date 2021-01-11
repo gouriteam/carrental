@@ -39,5 +39,23 @@ namespace DAL
             return ob.SaveChanges();
 
         }
+
+        public int ValidateAdmin(string userid, string pwd)
+        {
+           var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
+        
+            if(res>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        
+        
+        
+        }
+
     }
 }

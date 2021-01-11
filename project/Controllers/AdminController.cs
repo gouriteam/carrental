@@ -33,5 +33,28 @@ namespace project.Controllers
             }
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string userid, string pwd)
+        {
+            int res = ob.ValidateAdmin( userid,  pwd);
+
+            if (res > 0)
+            {
+                return RedirectToAction("Homepage");
+            }
+            else
+            {
+                ViewData["a"] = "Invalid User";
+            }
+            return View();
+        }
+
+
+
     }
 }
