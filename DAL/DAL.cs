@@ -181,6 +181,51 @@ public int ValidateAdmin(string userid, string pwd)
     }
 
 }
+        public int ValidateAdmin(string userid, string pwd)
+        {
+           var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
+        
+            if(res>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        
+        }
+        public int ValidateforCustomer(string userid, string pwd)
+        {
+            var res1 = (from x in ob.registrations where x.custname == userid & x.pwd == pwd select x).Count();
+
+            if (res1>0)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
+
+
+        public int Validateforid(string id)
+        {
+            var res = (from x in ob.admins where x.adminid == id select x).Count();
+            var res1 = (from x in ob.registrations where x.custid == id select x).Count();
+
+            if (res > 0 || res1>0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
 
 public int Registration(CustomerBE s)
 {

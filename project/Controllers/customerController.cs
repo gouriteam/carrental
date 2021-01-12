@@ -74,8 +74,12 @@ namespace project.Controllers
             return View(A);
 
         }
+        public ActionResult CustomerHomepage()
+        {
+            return View();
+        }
+        
 
-      
         public ActionResult Registration()
         {
             return View();
