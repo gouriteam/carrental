@@ -45,6 +45,28 @@ namespace BusinessEntity
 
 
     }
+
+    public class CustomerBE
+    {
+        public string custid { get; set; }
+        public string pwd { get; set; }
+        public string custname { get; set; }
+        public string gender { get; set; }
+        public DateTime DOB { get; set; }
+        public string phonenum { get; set; }
+        public string email { get; set; }
+    }
+
+
+
+
+}
+   
+
+}
+    
+
+
 }
    
 

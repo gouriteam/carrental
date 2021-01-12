@@ -138,6 +138,11 @@
     <Content Include="Views\customer\Home.cshtml" />
     <Content Include="Views\customer\booking.cshtml" />
     <Content Include="Views\Admin\AddDriver.cshtml" />
+    <Content Include="Views\customer\vehicles.cshtml" />
+    <Content Include="Views\customer\Book.cshtml" />
+    <Content Include="Views\customer\profile.cshtml" />
+    <Content Include="Views\customer\Viewbooking.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Admin\ViewBookedCars.cshtml" />
     <Content Include="Views\Admin\Bookedcars.cshtml" />
     <Content Include="Views\Admin\Editcars.cshtml" />

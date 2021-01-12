@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>vehicles</title>
+</head>
+<body>
+    <div>
+        <table border="2px">
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.carid</td>
+                
+            
+
+                <td>@item.model</td>
+            
+                <td>@item.ACtype</td>
+              
+                <td>@item.rentperday</td>
+            
+                <td>@item.fuelmode</td>
+          
+                <td>@item.images</td>
+           
+                <td>@item.available</td>
+            
+
+                <td> @Html.ActionLink("Book", "Book", new { st = @item.carid }, new { @class = "btn-success" })</td>
+
+            </tr>
+
+        }
+            </tbody>
+            </table>
+    </div>
+</body>
+</html>
