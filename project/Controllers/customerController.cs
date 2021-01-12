@@ -38,5 +38,27 @@ namespace project.Controllers
             
         }
 
+      
+        public ActionResult Registration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Registration(CustomerBE s)
+        {
+            
+                int res = ob.Registration(s);
+                if (res > 0)
+                {
+                    ViewData["status"] = " Registered successfully ";
+                }
+                else
+                {
+                    ViewData["status"] = "CustID already Exists";
+                }
+                return View();
+            
+        }
+
     }
 }

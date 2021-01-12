@@ -1,0 +1,67 @@
+﻿@model BusinessEntity.CustomerBE
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registration</title>
+</head>
+<body>
+    <div>
+
+        <form method="post">
+            <table>
+                @*<tr>
+                    <td> Enter customer Id </td>
+                    <td>@Html.TextBoxFor(s => s.custid, new { @class = "form-control" }) </td>
+                    <td> @Html.ValidationMessageFor(s => s.custid) </td>
+                </tr>*@
+                <tr>
+                    <td> Enter customer Name </td>
+                    <td>@Html.TextBoxFor(s => s.custname, new { @class = "form-control" }) </td>
+                    <td> @Html.ValidationMessageFor(s => s.custname) </td>
+                </tr>
+                <tr>
+                    <td> Enter Password </td>
+                    <td> @Html.TextBoxFor(s => s.pwd, new { @class = "form-control" })</td>
+                    <td> @Html.ValidationMessageFor(s => s.pwd) </td>
+                </tr>
+                <tr>
+                    <td> gender </td>
+                    <td>@Html.TextBoxFor(s => s.gender, new { @class = "form-control" }) </td>
+                    <td> @Html.ValidationMessageFor(s => s.gender) </td>
+                </tr>
+                <tr>
+                    <td> Enter DateofBirth </td>
+                    <td>@Html.TextBoxFor(s => s.DOB, new { @type = "date", @class = "form-control" })</td>
+                    <td> @Html.ValidationMessageFor(s => s.DOB) </td>
+                </tr>
+
+                <tr>
+                    <td> Enter phonenumber </td>
+                    <td> @Html.TextBoxFor(s => s.phonenum, new { @class = "form-control" })</td>
+                    <td> @Html.ValidationMessageFor(s => s.phonenum) </td>
+                </tr>
+                <tr>
+                    <td> Enter email </td>
+                    <td> @Html.TextBoxFor(s => s.email, new { @class = "form-control" })</td>
+                    <td> @Html.ValidationMessageFor(s => s.email) </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td> <input type="submit" value="Add Customer" class="btn-primary" /></td>
+                </tr>
+            </table>
+        </form>
+        <h5 style="color:darkred"> @ViewData["status"] </h5>
+
+
+    </div>
+</body>
+</html>
+

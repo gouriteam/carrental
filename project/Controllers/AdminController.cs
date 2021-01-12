@@ -46,6 +46,7 @@ namespace project.Controllers
 
             if (res > 0)
             {
+                Session["user"] = userid;
                 return RedirectToAction("Homepage");
             }
             else
@@ -58,16 +59,16 @@ namespace project.Controllers
 
 
             
-                if (res > 0)
-                {
-                    ViewData["a"] = "Vehicle added Successfully";
-                }
-                else
-                {
-                    ViewData["a"] = "Cannot Add Vehicles";
-                }
-                return View();
-            }
+            //    if (res > 0)
+            //    {
+            //        ViewData["a"] = "Vehicle added Successfully";
+            //    }
+            //    else
+            //    {
+            //        ViewData["a"] = "Cannot Add Vehicles";
+            //    }
+            //    return View();
+            //}
         
         //public ActionResult AddDriver()
         //{

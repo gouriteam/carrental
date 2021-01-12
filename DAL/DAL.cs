@@ -130,9 +130,30 @@ namespace DAL
                 return 0;
             }
         
-        
-        
         }
 
+        public int Registration(CustomerBE s)
+        {
+           
+                string custid;
+                var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
+                if (lastcus == null)
+                {
+                    custid = "CH1234";
+                }
+                else
+                {
+                    custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
+                }
+            registration st = new registration() { custid = custid, custname = s.custname,gender=s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email};
+
+                ob.registrations.Add(st);
+
+                return ob.SaveChanges();
+            }
+           
+        }
+
+
+
     }
-}

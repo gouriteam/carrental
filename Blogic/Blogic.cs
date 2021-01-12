@@ -30,6 +30,11 @@ namespace Blogic
         }
 
 
+        public int Registration(CustomerBE s)
+        {
+            return ob.Registration(s);
+        }
+
 
     }
 }
