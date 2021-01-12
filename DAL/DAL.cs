@@ -37,28 +37,28 @@ namespace DAL
             return ob.SaveChanges();
 
         }
-        //public int Adddriver(driverBE e)         
-        //{
+        public int Adddriver(driverBE e)
+        {
 
-        //    string driveridd;
-        //    var lastdriv = ob.drivers.OrderByDescending(c => c.driverid).FirstOrDefault();
-        //    if (lastdriv == null)
-        //    {
-        //        driveridd = "DR10000";
-        //    }
-        //    else
-        //    {
-        //        driveridd = "DR" + (Convert.ToInt32(lastdriv.driverid.Substring(2, 5)) + 1).ToString();
-        //    }
-        //    driver k = new driver()
-        //    {
-        //        driverid = driveridd,
-        //        drivername = e.drivername,
-        //        phonenum = e.phonenum
-        //    };
-        //    ob.drivers.Add(k);
-        //    return ob.SaveChanges();
-        //}
+            string driveridd;
+            var lastdriv = ob.drivers.OrderByDescending(c => c.driverid).FirstOrDefault();
+            if (lastdriv == null)
+            {
+                driveridd = "DR10000";
+            }
+            else
+            {
+                driveridd = "DR" + (Convert.ToInt32(lastdriv.driverid.Substring(2, 5)) + 1).ToString();
+            }
+            driver k = new driver()
+            {
+                driverid = driveridd,
+                drivername = e.drivername,
+                phonenum = e.phonenum
+            };
+            ob.drivers.Add(k);
+            return ob.SaveChanges();
+        }
 
         public int newbooking(bookingBE b)
         {
@@ -164,47 +164,46 @@ namespace DAL
         }
 
 
+
+
+
+public int ValidateAdmin(string userid, string pwd)
+{
+    var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
+
+    if (res > 0)
+    {
+        return 1;
     }
+    else
+    {
+        return 0;
+    }
+
 }
-        }
 
-        public int ValidateAdmin(string userid, string pwd)
-        {
-           var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
-        
-            if(res>0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        
-        }
+public int Registration(CustomerBE s)
+{
 
-        public int Registration(CustomerBE s)
-        {
-           
-                string custid;
-                var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
-                if (lastcus == null)
-                {
-                    custid = "CH1234";
-                }
-                else
-                {
-                    custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
-                }
-            registration st = new registration() { custid = custid, custname = s.custname,gender=s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email};
+    string custid;
+    var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
+    if (lastcus == null)
+    {
+        custid = "CH1234";
+    }
+    else
+    {
+        custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
+    }
+    registration st = new registration() { custid = custid, custname = s.custname, gender = s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email };
 
-                ob.registrations.Add(st);
+    ob.registrations.Add(st);
 
-                return ob.SaveChanges();
-            }
-           
-        }
-
-
+    return ob.SaveChanges();
+}
 
     }
+
+
+
+}

@@ -32,10 +32,10 @@ namespace Blogic
             return ob.bookingdetails();
         }
 
-        //public int Adddriver(driverBE e)
-        //{
-        //    return ob.Adddriver(e);
-        //}
+        public int Adddriver(driverBE e)
+        {
+            return ob.Adddriver(e);
+        }
 
         public int ValidateAdmin(string userid, string pwd)
         {
