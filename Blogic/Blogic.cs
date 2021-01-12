@@ -19,9 +19,21 @@ namespace Blogic
         {
             return ob.newbooking(b);
         }
-        //public int Adddriver(driverBE e)
-        //{
-        //    return ob.Adddriver(e);
-        //}
+        public int Adddriver(driverBE e)
+        {
+            return ob.Adddriver(e);
+        }
+        public int ValidateBCars(DateTime? start,  string WeekMonth)
+        {
+            return ob.ValidateBCars(start, WeekMonth);
+        }
+        public List<VehiclesBE> viewVehicle(DateTime? start, string WeekMonth)
+        {
+            return ob.viewVehicle(start, WeekMonth);
+        }
+        public int Editcars(VehiclesBE a)
+        {
+            return ob.Editcars(a);
+        }
     }
 }

@@ -5,4 +5,7 @@
 }
 
 <h2>Homepage</h2>
-@Html.ActionLink("Add Vehicle", "AddVehicle")
+@Html.ActionLink("Add Vehicle", "AddVehicle", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
+@Html.ActionLink("Add Driver", "AddDriver", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
+@Html.ActionLink("View Booked cars", "ViewBookedCars", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
+@Html.ActionLink("Edit Car Details", "Editcars", null, new { @class = "btn btn-primary" })
