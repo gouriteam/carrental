@@ -16,10 +16,18 @@
         <div>
             <p>Want to book a ride!!!</p>
             <table>
-                <tr>
-                    <td><label> Customer id</label></td>
-                    <td><input type="text" name="custid" /></td>
-                </tr>
+                @*<tr>
+                        <td><label> Customer id</label></td>
+                        <td><input type="text" name="custid" /></td>
+                    </tr>
+                    <tr>
+                        <td><label> car id</label></td>
+                        <td><input type="text" name="carid" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>driver id</label></td>
+                        <td><input type="text" name="driverid" /></td>
+                    </tr>*@
                 <tr>
                     <td><label> Start-Date </label></td>
                     <td><input type="date" name="startdate" /></td>
@@ -36,15 +44,23 @@
                     <td><label> To-route </label></td>
                     <td><input type="text" name="toroute" /></td>
                 </tr>
+                <tr>
+                    <td><label> Status </label></td>
+                    <td><input type="text" name="status" /></td>
+                </tr>
+                <tr>
+
+                    <td><input type="submit" value="submit" /></td>
+                </tr>
 
 
 
+            </table>
 
-             </table>
-                
 
         </div>
-
+        @ViewData["a"]
     </form>
 </body>
 </html>
+

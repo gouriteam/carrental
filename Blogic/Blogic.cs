@@ -19,9 +19,23 @@ namespace Blogic
         {
             return ob.newbooking(b);
         }
+        public List<VehiclesBE> Vehicles()
+        {
+            return ob.Vehicles();
+        }
+        public int Viewbooking(string custid)
+        {
+            return ob.Viewbooking(custid);
+        }
+        public List<bookingBE> bookingdetails()
+        {
+            return ob.bookingdetails();
+        }
+
         //public int Adddriver(driverBE e)
         //{
         //    return ob.Adddriver(e);
         //}
+
     }
 }
