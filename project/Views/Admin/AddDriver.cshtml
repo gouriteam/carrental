@@ -1,0 +1,24 @@
+﻿@model BusinessEntity.driverBE
+@{
+    ViewBag.Title = "AddDriver";
+    Layout = "~/Views/shared/Sitemaster1.cshtml";
+}
+
+<h2>AddDriver</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td><label> Enter Driver name </label></td>
+            <td> @Html.TextBoxFor(k => k.drivername) </td>
+        </tr>
+        <tr>
+            <td><label> Enter Driver Mobile No </label></td>
+            <td> @Html.TextBoxFor(k => k.phonenum) </td>
+        </tr>
+        <tr>
+            <td><label> </label></td>
+            <td> <input type="submit" value="Add Driver" /></td>
+        </tr>
+    </table>
+</form>
+@ViewData["b"]

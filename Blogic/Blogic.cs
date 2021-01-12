@@ -15,6 +15,14 @@ namespace Blogic
         {
             return ob.Addcar(a);
         }
+        public int newbooking(bookingBE b)
+        {
+            return ob.newbooking(b);
+        }
+        //public int Adddriver(driverBE e)
+        //{
+        //    return ob.Adddriver(e);
+        //}
 
         public int ValidateAdmin(string userid, string pwd)
         {
