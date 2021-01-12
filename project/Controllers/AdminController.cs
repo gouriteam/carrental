@@ -42,16 +42,21 @@ namespace project.Controllers
         [HttpPost]
         public ActionResult Login(string userid, string pwd)
         {
-            int res = ob.ValidateAdmin( userid,  pwd);
-
+            int res = ob.ValidateforAdmin( userid,  pwd);
+            int res1 = ob.ValidateforCustomer(userid, pwd);
             if (res > 0)
             {
                 Session["user"] = userid;
                 return RedirectToAction("Homepage");
             }
+            if (res1 > 0)
+            {
+                Session["user"] = userid;
+                return RedirectToAction("CustomerHomepage");
+            }
             else
             {
-                ViewData["a"] = "Invalid User";
+                ViewData["a"] = "Registration";
             }
             return View();
         }

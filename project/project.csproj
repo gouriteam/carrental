@@ -118,6 +118,7 @@
     <Content Include="Views\customer\booking.cshtml" />
     <Content Include="Views\Admin\AddDriver.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\customer\CustomerHomepage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
