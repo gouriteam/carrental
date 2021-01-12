@@ -116,7 +116,7 @@ namespace DAL
             foreach (var item in res)
             {
 
-                A.Add(new VehiclesBE() { carid = item.carid, model = item.model, capacity = item.capacity, ACtype = item.ACtype,rentperday = item.rentperday,fuelmode=item.fuelmode,images=item.images,available=item.available });
+                A.Add(new VehiclesBE() { carid = item.carid, model = item.model, capacity = item.capacity, ACtype = item.ACtype, rentperday = item.rentperday, fuelmode = item.fuelmode, images = item.images, available = item.available });
             }
             return A;
 
@@ -138,7 +138,7 @@ namespace DAL
         }
         public List<bookingBE> bookingdetails()
         {
-            string custid="a";
+            string custid = "a";
             var res = from t in ob.bookings
                       where t.custid == custid
                       select t;
@@ -147,11 +147,12 @@ namespace DAL
             foreach (var item in res)
             {
 
-                A.Add(new bookingBE() { 
-                    bookingid = item.bookingid, 
-                    custid=item.custid,
-                    carid = item.carid, 
-                    driverid=item.driverid,
+                A.Add(new bookingBE()
+                {
+                    bookingid = item.bookingid,
+                    custid = item.custid,
+                    carid = item.carid,
+                    driverid = item.driverid,
                     startdate = (DateTime)item.startdate,
                     enddate = (DateTime)item.enddate,
                     totalprice = (double)item.totalprice,
@@ -164,15 +165,12 @@ namespace DAL
         }
 
 
-    }
-}
-        }
 
         public int ValidateAdmin(string userid, string pwd)
         {
-           var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
-        
-            if(res>0)
+            var res = (from x in ob.admins where x.adminid == userid & x.adpwd == pwd select x).Count();
+
+            if (res > 0)
             {
                 return 1;
             }
@@ -180,13 +178,13 @@ namespace DAL
             {
                 return 0;
             }
-        
+
         }
         public int ValidateforCustomer(string userid, string pwd)
         {
-            var res1 = (from x in ob.registrations where x.custname == userid & x.pwd == pwd select x).Count();
+            var res1 = (from x in ob.registrations where x.custid == userid & x.pwd == pwd select x).Count();
 
-            if (res1>0)
+            if (res1 > 0)
             {
                 return 1;
             }
@@ -203,7 +201,7 @@ namespace DAL
             var res = (from x in ob.admins where x.adminid == id select x).Count();
             var res1 = (from x in ob.registrations where x.custid == id select x).Count();
 
-            if (res > 0 || res1>0)
+            if (res > 0 || res1 > 0)
             {
                 return 0;
             }
@@ -216,26 +214,26 @@ namespace DAL
 
         public int Registration(CustomerBE s)
         {
-           
-                string custid;
-                var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
-                if (lastcus == null)
-                {
-                    custid = "CH1234";
-                }
-                else
-                {
-                    custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
-                }
-            registration st = new registration() { custid = custid, custname = s.custname,gender=s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email};
 
-                ob.registrations.Add(st);
-
-                return ob.SaveChanges();
+            string custid;
+            var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
+            if (lastcus == null)
+            {
+                custid = "CH1234";
             }
-           
+            else
+            {
+                custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
+            }
+            registration st = new registration() { custid = custid, custname = s.custname, gender = s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email };
+
+            ob.registrations.Add(st);
+
+            return ob.SaveChanges();
         }
 
-
-
     }
+}
+
+
+

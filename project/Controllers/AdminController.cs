@@ -44,20 +44,17 @@ namespace project.Controllers
         {
             int res = ob.ValidateforAdmin( userid,  pwd);
             int res1 = ob.ValidateforCustomer(userid, pwd);
-            if (res > 0)
+            if (res1 > 0)
+            {
+                Session["user"] = userid;
+                return RedirectToAction("CustomerHomepage","customer");
+            }
+            if ( res > 0)
             {
                 Session["user"] = userid;
                 return RedirectToAction("Homepage");
             }
-            if (res1 > 0)
-            {
-                Session["user"] = userid;
-                return RedirectToAction("CustomerHomepage");
-            }
-            else
-            {
-                ViewData["a"] = "Registration";
-            }
+            
             return View();
         }
 
