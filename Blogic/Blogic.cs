@@ -37,5 +37,18 @@ namespace Blogic
         //    return ob.Adddriver(e);
         //}
 
+        public int ValidateAdmin(string userid, string pwd)
+        {
+            return ob.ValidateAdmin(userid, pwd);
+        }
+
+
+        public int Registration(CustomerBE s)
+        {
+            return ob.Registration(s);
+        }
+
+
+
     }
 }

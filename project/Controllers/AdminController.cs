@@ -24,17 +24,51 @@ namespace project.Controllers
         public ActionResult AddVehicle(VehiclesBE a)
         {
             int res = ob.Addcar(a);
-            
-                if (res > 0)
-                {
-                    ViewData["a"] = "Vehicle added Successfully";
-                }
-                else
-                {
-                    ViewData["a"] = "Cannot Add Vehicles";
-                }
-                return View();
+            if (res > 0)
+            {
+                ViewData["a"] = "Vehicle added Successfully";
             }
+            else
+            {
+                ViewData["a"] = "Cannot Add Vehicles";
+            }
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string userid, string pwd)
+        {
+            int res = ob.ValidateAdmin( userid,  pwd);
+
+            if (res > 0)
+            {
+                Session["user"] = userid;
+                return RedirectToAction("Homepage");
+            }
+            else
+            {
+                ViewData["a"] = "Invalid User";
+            }
+            return View();
+        }
+
+
+
+            
+            //    if (res > 0)
+            //    {
+            //        ViewData["a"] = "Vehicle added Successfully";
+            //    }
+            //    else
+            //    {
+            //        ViewData["a"] = "Cannot Add Vehicles";
+            //    }
+            //    return View();
+            //}
         
         //public ActionResult AddDriver()
         //{
