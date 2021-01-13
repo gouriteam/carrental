@@ -3,9 +3,35 @@
     ViewBag.Title = "Homepage";
     Layout = "~/Views/shared/Sitemaster1.cshtml";
 }
+<script src="~/Contents/JavaScript.js"></script>
+<link href="~/Contents/StyleSheet1.css" rel="stylesheet" />
 
 <h2>Homepage</h2>
 @Html.ActionLink("Add Vehicle", "AddVehicle", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
 @Html.ActionLink("Add Driver", "AddDriver", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
 @Html.ActionLink("View Booked cars", "ViewBookedCars", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
-@Html.ActionLink("Edit Car Details", "Editcars", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Edit Car Details", "Editcars", null, new { @class = "btn btn-primary" })<span> &nbsp;</span><span> &nbsp;</span>
+@Html.ActionLink("Allot Drivers", "Allotdriver", null, new { @class = "btn btn-primary" })
+
+
+
+<h5> No of Vehciles : @TempData["ncars"] </h5>
+<br />
+<h5> No of Users: @TempData["nusers"] </h5>
+<br />
+<h5> No of Bookings Cancelled: @TempData["ncancel"] </h5>
+<br />
+<h5> No of Car model : @TempData["nmodel"] </h5>
+<br />
+<h5> No of Bookings Made : @TempData["nbooks"] </h5>
+<br />
+<div id="shiva"><span class="count">200</span></div>
+<br />
+
+
+<form method="post">
+    <input type="text" name="Month" />
+    <input type="submit" value="GetBook By Month" />
+</form>
+<h5> No of Bookings Made by month : @TempData["nbymonth"] </h5>
+<br />

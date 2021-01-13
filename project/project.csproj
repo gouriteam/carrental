@@ -105,6 +105,8 @@
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.js" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.min.js" />
+    <Content Include="Contents\JavaScript.js" />
+    <Content Include="Contents\Jquery.js" />
     <Content Include="Contents\StyleSheet1.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -134,7 +136,6 @@
     <None Include="packages.config" />
     <Content Include="Views\shared\Sitemaster1.cshtml" />
     <Content Include="Views\Admin\Homepage.cshtml" />
-    <Content Include="Views\Admin\AddVehicle.cshtml" />
     <Content Include="Views\customer\Home.cshtml" />
     <Content Include="Views\customer\booking.cshtml" />
     <Content Include="Views\Admin\AddDriver.cshtml" />
@@ -146,6 +147,8 @@
     <Content Include="Views\Admin\ViewBookedCars.cshtml" />
     <Content Include="Views\Admin\Bookedcars.cshtml" />
     <Content Include="Views\Admin\Editcars.cshtml" />
+    <Content Include="Views\Admin\AddVehicle.cshtml" />
+    <Content Include="Views\Admin\Allotdriver.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

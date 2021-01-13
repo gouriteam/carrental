@@ -10,11 +10,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>VehiclesBE</h4>
         <hr />
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.carid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -52,7 +52,7 @@
             @Html.LabelFor(model => model.rentperday, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.rentperday, new { htmlAttributes = new { @class = "form-control" } })
-                
+
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             @Html.LabelFor(model => model.fuelmode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.fuelmode, new { htmlAttributes = new { @class = "form-control" } })
-          
+
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             @Html.LabelFor(model => model.images, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.images, new { htmlAttributes = new { @class = "form-control" } })
-          
+
             </div>
         </div>
 
@@ -76,7 +76,7 @@
             @Html.LabelFor(model => model.available, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.available, new { htmlAttributes = new { @class = "form-control" } })
-             
+
             </div>
         </div>
 
@@ -87,7 +87,7 @@
         </div>
     </div>
 }
-
+@ViewData["a"]
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

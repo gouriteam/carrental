@@ -6,10 +6,21 @@
     <title>@ViewBag.Title</title>
     <link href="~/Contents/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Contents/StyleSheet1.css" rel="stylesheet" />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <header>
+    </header>
+    <nav style="text-align:center">
+    </nav><hr />
+
+    <article>
+        <div>
+            @RenderBody()
+        </div>
+    </article>
+    <footer style=" left:0;bottom:0;width : 100%;text-align:left ;background-color: crimson;position:fixed;color:white ">
+        &copy; 2020 Car Rental Application
+    </footer>
 </body>
 </html>

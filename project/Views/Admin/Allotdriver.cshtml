@@ -1,0 +1,28 @@
+﻿@model BusinessEntity.driverBE
+@{
+    ViewBag.Title = "Allotdriver";
+    Layout = "~/Views/shared/Sitemaster1.cshtml";
+}
+
+<h2>Allotdriver</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td> <label> Enter Booked ID </label></td>
+            <td> <input type="text" name="bookingid" /></td>
+        </tr>
+        <tr>
+            <td> <label> Enter Car ID </label></td>
+            <td> <input type="text" name="carid" /></td>
+        </tr>
+        <tr>
+            <td> <label> Enter Driver Id</label></td>
+            <td> <input type="text" name="driverid" /></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td> <input type="submit" value="Assign Driver " /></td>
+        </tr>
+    </table>
+</form>
+@ViewData["status"]

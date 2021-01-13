@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BusinessEntity;
 using Blogic;
 using System.IO;
+using System.Web.WebPages.Html;
 namespace project.Controllers
 {
     public class AdminController : Controller
@@ -14,6 +15,21 @@ namespace project.Controllers
         // GET: Admin
         public ActionResult Homepage()
         {
+            TempData["ncars"] = ob.nofcars();
+            TempData["nusers"] = ob.noofusers();
+            TempData["ncancel"] = ob.nofcancel();
+            TempData["nmodel"] = ob.noofcarmodels();
+            TempData["nbooks"] = ob.noofbooks();
+            TempData["nbookstdy"] = ob.nooftdy();
+            
+            TempData.Keep();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Homepage(string Month)
+        {
+            TempData["nbymonth"] = ob.nbymonth(Month);
+            TempData.Keep();
             return View();
         }
         public ActionResult AddVehicle()
@@ -111,17 +127,7 @@ namespace project.Controllers
             
             return View();
         }
-            if (res > 0)
-            {
-                ViewData["a"] = "Vehicle added Successfully";
-            }
-            else
-            {
-                ViewData["a"] = "Cannot Add Vehicles";
-            }
-            return View();
-        }
-
+      
         public ActionResult Login()
         {
             return View();
@@ -142,38 +148,31 @@ namespace project.Controllers
             }
             return View();
         }
-
-
-
-            
-            //    if (res > 0)
-            //    {
-            //        ViewData["a"] = "Vehicle added Successfully";
-            //    }
-            //    else
-            //    {
-            //        ViewData["a"] = "Cannot Add Vehicles";
-            //    }
-            //    return View();
-            //}
-        
-        //public ActionResult AddDriver()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //public ActionResult AddDriver(driverBE e)
-        //{
-        //    int res = ob.Adddriver(e);
-        //    if (res > 0)
-        //    {
-        //        ViewData["b"] = " Driver is assigned";
-        //    }
-        //    else
-        //    {
-        //        ViewData["b"] = " Driver Cannot be Assigned";
-        //    }
-        //    return View();
-        //}
+        public ActionResult Allotdriver()
+        {
+            return View();
+        }
+        public ActionResult k()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Allotdriver(string bookingid ,string carid, string driverid)
+        {
+            int k = ob.Allotdriver(bookingid, carid, driverid);
+            if ( k > 0)
+            {
+                ViewData["status"] = "Driver Alloted Successfully";
+            }
+            else if ( k < 0)
+            {
+                ViewData["status"] = "Driver ALREADY bOOKED ON THIS DATE";
+            }
+            else
+            {
+                ViewData["status"] = "Driver Cannot be assigned";
+            }
+            return View();
+        }
     }
 }

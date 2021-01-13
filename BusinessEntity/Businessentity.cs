@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+
 namespace BusinessEntity
 {
     public class VehiclesBE
@@ -62,11 +63,3 @@ namespace BusinessEntity
 
 }
    
-
-}
-    
-
-
-}
-   
-

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BusinessEntity.VehiclesBE>
+﻿@model IEnumerable<BusinessEntity.bookingBE>
 @{
     ViewBag.Title = "Bookedcars";
     Layout = "~/Views/shared/Sitemaster1.cshtml";
@@ -9,23 +9,18 @@
 <table style=" border:3px ridge red; background-color :lightgoldenrodyellow">
     <tr style=" border: 3px ridge red">
         <td style="border : 2px double black"> <label style="font-weight : bold"> car id </label></td>
-        <td style="border : 2px double black"><label style="font-weight : bold"> AC i </label></td>
-        <td style="border : 2px double black"> <label style="font-weight : bold"> Availablity  </label></td>
-        <td style="border : 2px double black"> <label style="font-weight : bold"> fuel Mode  </label></td>
-        <td style="border : 2px double black"> <label style="font-weight : bold"> Images   </label></td>
-        <td style="border : 2px double black"> <label style="font-weight : bold"> Model   </label></td>
-        <td style="border : 2px double black"> <label style="font-weight : bold"> Rent per day   </label></td>
+        <td style="border : 2px double black"><label style="font-weight : bold"> Booking ID </label></td>
+        <td style="border : 2px double black"> <label style="font-weight : bold"> Start Date  </label></td>
+        <td style="border : 2px double black"> <label style="font-weight : bold"> End Mode  </label></td>
     </tr>
     @foreach (var item in Model)
     {
 <tr style=" border: 3px ridge red">
     <td style="border : 2px double black"> @item.carid </td>
-    <td style="border : 2px double black"> @item.ACtype </td>
-    <td style="border : 2px double black"> @item.available</td>
-    <td style="border : 2px double black"> @item.fuelmode</td>
-    <td style="border : 2px double black"> @item.images</td>
-    <td style="border : 2px double black"> @item.model</td>
-    <td style="border : 2px double black"> @item.rentperday</td>
+    <td style="border : 2px double black"> @item.bookingid </td>
+    <td style="border : 2px double black"> @item.startdate</td>
+    <td style="border : 2px double black"> @item.enddate</td>
+ 
 </tr>
     }
 </table>
