@@ -115,7 +115,6 @@
     <Content Include="Views\Admin\Homepage.cshtml" />
     <Content Include="Views\Admin\AddVehicle.cshtml" />
     <Content Include="Views\customer\Home.cshtml" />
-    <Content Include="Views\customer\booking.cshtml" />
     <Content Include="Views\Admin\AddDriver.cshtml" />
     <Content Include="Views\customer\vehicles.cshtml" />
     <Content Include="Views\customer\Book.cshtml" />
@@ -123,6 +122,8 @@
     <Content Include="Views\customer\Viewbooking.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\customer\CustomerHomepage.cshtml" />
+    <Content Include="Views\customer\bookingdetails.cshtml" />
+    <Content Include="Views\customer\Cancel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -27,10 +27,15 @@ namespace Blogic
         {
             return ob.Viewbooking(custid);
         }
-        public List<bookingBE> bookingdetails()
+        public List<bookingBE> bookingdetails(string custid)
         {
-            return ob.bookingdetails();
+            return ob.bookingdetails(custid);
         }
+        public int Cancel(string bookingid)
+        {
+            return ob.Cancel(bookingid);
+        }
+
 
         public int Adddriver(driverBE e)
         {

@@ -62,47 +62,51 @@ namespace DAL
 
         public int newbooking(bookingBE b)
         {
+            
+                string bookingid;
+                var lastbooking = ob.bookings.OrderByDescending(c => c.bookingid).FirstOrDefault();
+                if (lastbooking == null)
+                {
+                    bookingid = "B00000";
+                }
+                else
+                {
+                    bookingid = "B" + (Convert.ToInt32(lastbooking.bookingid.Substring(1, 5)) + 11111).ToString();
+                }
 
-            string bookingid;
-            var lastbooking = ob.bookings.OrderByDescending(c => c.bookingid).FirstOrDefault();
-            if (lastbooking == null)
-            {
-                bookingid = "B00000";
-            }
-            else
-            {
-                bookingid = "B" + (Convert.ToInt32(lastbooking.bookingid.Substring(1, 5)) + 11111).ToString();
-            }
 
-            //var start = b.startdate;
-            //var end = b.enddate;
+            DateTime d = b.startdate;
+            DateTime j = b.enddate;
+            var o = (j - d).TotalDays;
+            
 
-            //var a = start.Date;
-            //var k = end.Date;
-            //int n = DateTime.Parse(a) - Convert.ToInt32(k);
+            var price = from t in ob.vehicles
+                         where t.carid == b.carid
+                         select t.rentperday;
+            var g = price.Single();
+            var n = g * o;
 
-            //string rentperday="a";
-            //var r = rentperday;
-            //var totalp = n * int.Parse(r);
-
+          
             booking bi = new booking()
-            {
+                {
 
-                bookingid = bookingid,
-                custid = b.custid,
-                carid = b.carid,
-                driverid = b.driverid,
-                startdate = DateTime.Parse("01-01-2021"),
-                enddate = DateTime.Parse("02-01-2021"),
-                totalprice = b.totalprice,
-                fromroute = b.fromroute,
-                toroute = b.toroute,
-                status = b.status
+                    bookingid = bookingid,
+                    custid = b.custid,
+                    carid = b.carid,
+                    driverid = b.driverid,
+                    startdate = DateTime.Parse("01-01-2021"),
+                    enddate = DateTime.Parse("02-01-2021"),
+                    totalprice = n,
+                    fromroute = b.fromroute,
+                    toroute = b.toroute,
+                    status = true
 
 
-            };
-            ob.bookings.Add(bi);
-            return ob.SaveChanges();
+                };
+                ob.bookings.Add(bi);
+                return ob.SaveChanges();
+         
+            
 
         }
 
@@ -136,9 +140,9 @@ namespace DAL
                 return 0;
             }
         }
-        public List<bookingBE> bookingdetails()
+        public List<bookingBE> bookingdetails(string custid)
         {
-            string custid="a";
+           
             var res = from t in ob.bookings
                       where t.custid == custid
                       select t;
@@ -164,23 +168,44 @@ namespace DAL
         }
 
 
+        //public int Edit(CustomerBE c)
+        //{
+        //    var res = from t in ob.registrations
+        //              where t.custid == c.custid
+        //              select t;
+        //    if(res.Count()>0)
+        //    {
+        //        (from t inob.registrations
+        //         where testc.custid==c.custid
+        //         select t).ToList().ForEach(
+        //            e=>
+        //            {
+        //                e.
+        //            }
+        //            )
+        //    }
+        //}
+
+        public int Cancel(string bookingid)
+        {
+
+            var res = ob.bookings.Where(t => t.bookingid == bookingid);
+            if (res.Count() > 0)
+            {
+                foreach (var item in res)
+                {
+                    item.status = false;
+                }
+                ob.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
 
-
-public int ValidateAdmin(string userid, string pwd)
-{
-    var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
-
-    if (res > 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-
-}
         public int ValidateAdmin(string userid, string pwd)
         {
            var res = (from x in ob.admins where x.adname == userid & x.adpwd == pwd select x).Count();
@@ -216,7 +241,7 @@ public int ValidateAdmin(string userid, string pwd)
             var res = (from x in ob.admins where x.adminid == id select x).Count();
             var res1 = (from x in ob.registrations where x.custid == id select x).Count();
 
-            if (res > 0 || res1>0)
+            if (res > 0 || res1 > 0)
             {
                 return 0;
             }
@@ -227,27 +252,30 @@ public int ValidateAdmin(string userid, string pwd)
 
         }
 
-public int Registration(CustomerBE s)
-{
+        public int Registration(CustomerBE s)
+        {
 
-    string custid;
-    var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
-    if (lastcus == null)
-    {
-        custid = "CH1234";
+             string custid;
+             var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
+             if (lastcus == null)
+             {
+                custid = "CH1234";
+             }
+             else
+             {
+                 custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
+             }
+            registration st = new registration() { custid = custid, custname = s.custname, gender = s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email };
+
+            ob.registrations.Add(st);
+
+             return ob.SaveChanges();
+        }
+
     }
-    else
-    {
-        custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
-    }
-    registration st = new registration() { custid = custid, custname = s.custname, gender = s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email };
 
-    ob.registrations.Add(st);
 
-    return ob.SaveChanges();
-}
 
-    }
 
 
 

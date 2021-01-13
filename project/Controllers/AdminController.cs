@@ -63,18 +63,6 @@ namespace project.Controllers
 
 
 
-
-        //    if (res > 0)
-        //    {
-        //        ViewData["a"] = "Vehicle added Successfully";
-        //    }
-        //    else
-        //    {
-        //        ViewData["a"] = "Cannot Add Vehicles";
-        //    }
-        //    return View();
-        //}
-
         public ActionResult AddDriver()
         {
             return View();
