@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+
 namespace BusinessEntity
 {
     public class VehiclesBE
@@ -17,7 +18,6 @@ namespace BusinessEntity
         public string fuelmode { get; set; }
         public string images { get; set; }
         public string available { get; set; }
-        public HttpPostedFile ImageFile { get; set; }
 
     }
     public class driverBE
@@ -29,7 +29,7 @@ namespace BusinessEntity
         public string phonenum { get; set; }
 
 
-           }
+     }
     public class bookingBE
     {
 
@@ -62,6 +62,7 @@ namespace BusinessEntity
 
 
 }
+   
    
 
 

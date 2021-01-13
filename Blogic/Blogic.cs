@@ -55,14 +55,59 @@ namespace Blogic
         {
             return ob.Validateforid(id);
         }
-
+        public int ValidateforCustomer(string userid, string pwd)
+        {
+            return ob.ValidateforCustomer(userid, pwd);
+        }
 
         public int Registration(CustomerBE s)
         {
             return ob.Registration(s);
         }
 
-
-
+        public int ValidateBCars(DateTime? start, string WeekMonth)
+        {
+            return ob.ValidateBCars(start, WeekMonth);
+        }
+        public List<bookingBE> viewVehicle(DateTime? start, string WeekMonth)
+        {
+            return ob.viewVehicle(start, WeekMonth);
+        }
+        public int Editcars(VehiclesBE a)
+        {
+            return ob.Editcars(a);
+        }
+        public int Allotdriver(string bookingid, string carid, string driverid)
+        {
+            return ob.Allotdriver(bookingid, carid, driverid);
+        }
+        public int nofcars()
+        {
+            return ob.nofcars();
+        }
+        public int noofbooks()
+        {
+            return ob.noofbooks();
+        }
+        public int noofusers()
+        {
+            return ob.noofusers();
+        }
+        public int noofcarmodels()
+        {
+            return ob.noofcarmodels();
+        }
+        public int nofcancel()
+        {
+            return ob.nofcancel();
+        }
+        public int nooftdy()
+        {
+            return ob.nooftdy();
+        }
+        public int nbymonth(string Month)
+        {
+            return ob.nbymonth(Month);
+        }
     }
 }
