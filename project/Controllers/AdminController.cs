@@ -145,11 +145,16 @@ namespace project.Controllers
             if (res1 > 0)
             {
                 Session["user"] = userid;
+                return RedirectToAction("CustomerHomepage");
+            }
+            if (res1 > 0)
+            {
+                Session["user"] = userid;
                 return RedirectToAction("Home", "customer");
             }
             else
             {
-                ViewData["a"] = "Invalid User";
+                ViewData["a"] = "Registration";
             }
             return View();
         }

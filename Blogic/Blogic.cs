@@ -46,6 +46,15 @@ namespace Blogic
             return ob.ValidateforCustomer(userid, pwd);
         }
 
+        public int Validateforid(string id)
+        {
+            return ob.Validateforid(id);
+        }
+        public int ValidateforCustomer(string userid, string pwd)
+        {
+            return ob.ValidateforCustomer(userid, pwd);
+        }
+
         public int Registration(CustomerBE s)
         {
             return ob.Registration(s);
