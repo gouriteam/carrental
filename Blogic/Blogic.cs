@@ -32,28 +32,25 @@ namespace Blogic
             return ob.bookingdetails();
         }
 
-        //public int Adddriver(driverBE e)
-        //{
-        //    return ob.Adddriver(e);
-        //}
+        public int Adddriver(driverBE e)
+        {
+            return ob.Adddriver(e);
+        }
 
-        public int ValidateAdmin(string userid, string pwd)
+        public int ValidateforAdmin(string userid, string pwd)
         {
             return ob.ValidateAdmin(userid, pwd);
         }
-
+        public int ValidateforCustomer(string userid, string pwd)
+        {
+            return ob.ValidateforCustomer(userid, pwd);
+        }
 
         public int Registration(CustomerBE s)
         {
             return ob.Registration(s);
         }
 
-
-
-        public int Adddriver(driverBE e)
-        {
-            return ob.Adddriver(e);
-        }
         public int ValidateBCars(DateTime? start, string WeekMonth)
         {
             return ob.ValidateBCars(start, WeekMonth);
