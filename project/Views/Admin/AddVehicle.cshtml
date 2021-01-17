@@ -4,41 +4,41 @@
     Layout = "~/Views/shared/Sitemaster1.cshtml";
 }
 
-<h2>Addcar</h2>
+<h2>AddVehicle</h2>
 <form method="post">
     <table>
         <tr>
-            <td><label> Enter Car Model</label></td>
-            <td>@Html.TextBoxFor(a => a.model)</td>
+            <td> <label> Enter Car Capacity </label></td>
+            <td> @Html.TextBoxFor(a => a.capacity)</td>
         </tr>
         <tr>
-            <td><label> Enter Actype </label></td>
-            <td>@Html.TextBoxFor(a => a.ACtype)</td>
+            <td> <label>Enter Car ACTYPE </label></td>
+            <td> @Html.TextBoxFor(a => a.ACtype)</td>
         </tr>
         <tr>
-            <td><label> Enter Car Capacity </label></td>
-            <td>@Html.TextBoxFor(a => a.capacity )</td>
+            <td> <label> Enter Car Fuel Mode</label></td>
+            <td> @Html.TextBoxFor(a => a.fuelmode)</td>
         </tr>
         <tr>
-            <td><label> Enter Fuel Mode </label></td>
-            <td>@Html.TextBoxFor(a => a.fuelmode)</td>
+            <td> <label> Enter Car Images Path</label></td>
+            <td> @Html.TextBoxFor(a => a.images)</td>
         </tr>
         <tr>
-            <td><label> Enter Car Images </label></td>
-            <td>@Html.TextBoxFor(a => a.images, new { @type = "file" })  </td>
+            <td> <label> Enter Car Model Name</label></td>
+            <td> @Html.TextBoxFor(a => a.model)</td>
+        <tr>
+            <td> <label> Enter Car Avalaiblity Status</label></td>
+            <td> @Html.TextBoxFor(a => a.available)</td>
         </tr>
         <tr>
-            <td><label> Enter  Charges for RentPerDay </label></td>
-            <td>@Html.TextBoxFor(a => a.rentperday)</td>
-        </tr>
-        <tr>
-            <td><label> Enter  Availability status </label></td>
-            <td>@Html.TextBoxFor(a => a.available)</td>
+            <td> <label>Enter Car Rent Per Day </label></td>
+            <td> @Html.TextBoxFor(a => a.rentperday)</td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Submit"/></td>
+            <td> <input type="submit" name=" ADD VEHICLE"/></td>
         </tr>
+        
     </table>
 </form>
 @ViewData["a"]

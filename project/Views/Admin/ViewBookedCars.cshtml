@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "ViewBookedCars";
+    Layout = "~/Views/shared/Sitemaster1.cshtml";
+}
+
+<h2>ViewBookedCars</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td><label>From Date </label></td>
+            <td> <input type="date" name="start" /></td>
+        </tr>
+        <tr>
+            <td> <label> Enter Transaction Type </label></td>
+            <td> @Html.DropDownList("WeekMonth", new List<SelectListItem> { new SelectListItem { Text = "Weekly", Value = "Weekly" }, new SelectListItem { Text = "Monthly", Value = "Monthly" } }) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="GetBooked cars" /></td>
+        </tr>
+    </table>
+</form>
+@ViewData["status"]

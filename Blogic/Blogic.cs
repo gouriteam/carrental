@@ -27,15 +27,20 @@ namespace Blogic
         {
             return ob.Viewbooking(custid);
         }
-        public List<bookingBE> bookingdetails()
+        public List<bookingBE> bookingdetails(string custid)
         {
-            return ob.bookingdetails();
+            return ob.bookingdetails(custid);
+        }
+        public int Cancel(string bookingid)
+        {
+            return ob.Cancel(bookingid);
         }
 
-        //public int Adddriver(driverBE e)
-        //{
-        //    return ob.Adddriver(e);
-        //}
+
+        public int Adddriver(driverBE e)
+        {
+            return ob.Adddriver(e);
+        }
 
         public int ValidateforAdmin(string userid, string pwd)
         {
@@ -50,7 +55,14 @@ namespace Blogic
         //{
         //    return ob.Validateforid(id);
         //}
-
+        public int Validateforid(string id)
+        {
+            return ob.Validateforid(id);
+        }
+        public int ValidateforCustomer(string userid, string pwd)
+        {
+            return ob.ValidateforCustomer(userid, pwd);
+        }
 
         public int Registration(CustomerBE s)
         {
@@ -64,5 +76,49 @@ namespace Blogic
         }
 
 
+        public int ValidateBCars(DateTime? start, string WeekMonth)
+        {
+            return ob.ValidateBCars(start, WeekMonth);
+        }
+        public List<bookingBE> viewVehicle(DateTime? start, string WeekMonth)
+        {
+            return ob.viewVehicle(start, WeekMonth);
+        }
+        public int Editcars(VehiclesBE a)
+        {
+            return ob.Editcars(a);
+        }
+        public int Allotdriver(string bookingid, string carid, string driverid)
+        {
+            return ob.Allotdriver(bookingid, carid, driverid);
+        }
+        public int nofcars()
+        {
+            return ob.nofcars();
+        }
+        public int noofbooks()
+        {
+            return ob.noofbooks();
+        }
+        public int noofusers()
+        {
+            return ob.noofusers();
+        }
+        public int noofcarmodels()
+        {
+            return ob.noofcarmodels();
+        }
+        public int nofcancel()
+        {
+            return ob.nofcancel();
+        }
+        public int nooftdy()
+        {
+            return ob.nooftdy();
+        }
+        public int nbymonth(string Month)
+        {
+            return ob.nbymonth(Month);
+        }
     }
 }

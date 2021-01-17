@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+
 namespace BusinessEntity
 {
     public class VehiclesBE
@@ -18,7 +19,6 @@ namespace BusinessEntity
         public string fuelmode { get; set; }
         public string images { get; set; }
         public string available { get; set; }
-        public HttpPostedFile ImageFile { get; set; }
 
     }
     public class driverBE
@@ -30,7 +30,7 @@ namespace BusinessEntity
         public string phonenum { get; set; }
 
 
-           }
+     }
     public class bookingBE
     {
 
@@ -86,6 +86,9 @@ namespace BusinessEntity
         public int rating { get; set; }
     }
     }
+   
+
+
    
 
 
