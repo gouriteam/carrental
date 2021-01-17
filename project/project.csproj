@@ -124,6 +124,7 @@
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\customer\CustomerHomepage.cshtml" />
     <Content Include="Views\customer\Registration.cshtml" />
+    <Content Include="Views\customer\feedback.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

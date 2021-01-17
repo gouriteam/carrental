@@ -16,40 +16,55 @@
         <form method="post">
             <table>
                 @*<tr>
-                        <td> Enter customer Id </td>
-                        <td>@Html.TextBoxFor(s => s.custid, new { @class = "form-control" }) </td>
-                        <td> @Html.ValidationMessageFor(s => s.custid) </td>
-                    </tr>*@
+            <td> Enter customer Id </td>
+            <td>@Html.TextBoxFor(s => s.custid, new { @class = "form-control" }) </td>
+            <td> @Html.ValidationMessageFor(s => s.custid) </td>
+        </tr>*@
+            
                 <tr>
-                    <td> Enter customer Name </td>
-                    <td>@Html.TextBoxFor(s => s.custname, new { @class = "form-control" }) </td>
-                    <td> @Html.ValidationMessageFor(s => s.custname) </td>
+                    <td>Enter customer Name </td>
+                    <td>   @Html.TextBoxFor(c => c.custname, new { @type = "name" }) </td>
+                    <td> @Html.ValidationMessageFor(c => c.custname) </td>
                 </tr>
                 <tr>
-                    <td> Enter Password </td>
-                    <td> @Html.TextBoxFor(s => s.pwd, new { @class = "form-control" })</td>
-                    <td> @Html.ValidationMessageFor(s => s.pwd) </td>
+                    <td>Enter Password</td>
+                    <td>  @Html.PasswordFor(c => c.pwd) </td>
+                    <td> @Html.ValidationMessageFor(c => c.pwd) </td>
+
                 </tr>
                 <tr>
-                    <td> gender </td>
-                    <td>@Html.TextBoxFor(s => s.gender, new { @class = "form-control" }) </td>
-                    <td> @Html.ValidationMessageFor(s => s.gender) </td>
+                    <td> Confirm Password </td>
+                    <td>  @Html.PasswordFor(c => c.confirmpassword) </td>
+                    <td> @Html.ValidationMessageFor(c => c.confirmpassword) </td>
                 </tr>
-                <tr>
-                    <td> Enter DateofBirth </td>
-                    <td>@Html.TextBoxFor(s => s.DOB, new { @type = "date", @class = "form-control" })</td>
-                    <td> @Html.ValidationMessageFor(s => s.DOB) </td>
-                </tr>
+                
 
                 <tr>
-                    <td> Enter phonenumber </td>
-                    <td> @Html.TextBoxFor(s => s.phonenum, new { @class = "form-control" })</td>
-                    <td> @Html.ValidationMessageFor(s => s.phonenum) </td>
+                    <td>Gender</td>
+                    <td>
+                        Male    @Html.RadioButtonFor(c => c.gender, true)
+                        Female  @Html.RadioButtonFor(c => c.gender, false)
+                    <td> @Html.ValidationMessageFor(c => c.gender) </td>
+                    </td>
+
                 </tr>
+               
                 <tr>
-                    <td> Enter email </td>
-                    <td> @Html.TextBoxFor(s => s.email, new { @class = "form-control" })</td>
-                    <td> @Html.ValidationMessageFor(s => s.email) </td>
+                    <td> Date of Birth</td>
+                    <td>   @Html.TextBoxFor(c => c.DOB, new { @type = "date" }) </td>
+                    <td> @Html.ValidationMessageFor(c => c.DOB) </td>
+                </tr>
+                   
+                <tr>
+                    <td>Enter phonenumber</td>
+                    <td>   @Html.TextBoxFor(c => c.phonenum, new { @type = "phonenumber" }) </td>
+                    <td> @Html.ValidationMessageFor(c => c.phonenum) </td>
+                </tr>
+              
+                <tr>
+                    <td>Enter email</td>
+                    <td>   @Html.TextBoxFor(c => c.email, new { @type = "Email" }) </td>
+                    <td> @Html.ValidationMessageFor(c => c.email) </td>
                 </tr>
 
                 <tr>

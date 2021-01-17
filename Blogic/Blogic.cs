@@ -46,10 +46,10 @@ namespace Blogic
             return ob.ValidateforCustomer(userid, pwd);
         }
 
-        public int Validateforid(string id)
-        {
-            return ob.Validateforid(id);
-        }
+        //public int Validateforid(string id)
+        //{
+        //    return ob.Validateforid(id);
+        //}
 
 
         public int Registration(CustomerBE s)
@@ -57,6 +57,11 @@ namespace Blogic
             return ob.Registration(s);
         }
 
+
+        public int feedback(feedbackBE f)
+        {
+            return ob.feedback(f);
+        }
 
 
     }

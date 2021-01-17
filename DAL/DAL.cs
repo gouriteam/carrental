@@ -6,6 +6,7 @@ namespace DAL
 {
     public class DALLayer
     {
+
         rentalEntities ob = new rentalEntities();
         public int Addcar(VehiclesBE a)
         {
@@ -196,21 +197,21 @@ namespace DAL
         }
 
 
-        public int Validateforid(string id)
-        {
-            var res = (from x in ob.admins where x.adminid == id select x).Count();
-            var res1 = (from x in ob.registrations where x.custid == id select x).Count();
+        //public int Validateforid(string id)
+        //{
+        //    var res = (from x in ob.admins where x.adminid == id select x).Count();
+        //    var res1 = (from x in ob.registrations where x.custid == id select x).Count();
 
-            if (res > 0 || res1 > 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+        //    if (res > 0 || res1 > 0)
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        return 1;
+        //    }
 
-        }
+        //}
 
         public int Registration(CustomerBE s)
         {
@@ -231,6 +232,41 @@ namespace DAL
 
             return ob.SaveChanges();
         }
+
+        public int feedback(feedbackBE f)
+
+        {
+
+            //var res = from t in ob.feedbacks
+            //          where t.id == id
+            //          select t;
+
+            feedback fb = new feedback()
+            {
+                id = f.id,
+                bookingid = f.bookingid,
+                comments = f.comments,
+                rating = f.rating
+
+            };
+
+            ob.feedbacks.Add(fb);
+            return ob.SaveChanges();
+        }
+
+        //public int feedback(feedbackBE f)
+        //{
+        //    IEnumerable<feedback> feedbacks = (from x in ob.feedbacks
+        //                                       select new feedback()
+        //                                       {
+
+        //                                           id = x.id,
+        //                                           bookingid = x.bookingid,
+        //                                           comments = x.comments,
+        //                                           rating = x.rating
+        //                                       }).ToList();
+
+        //}
 
     }
 }
