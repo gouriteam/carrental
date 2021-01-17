@@ -168,6 +168,8 @@
     <Content Include="Views\customer\profile.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\customer\CustomerHomepage.cshtml" />
+    <Content Include="Views\customer\Registration.cshtml" />
+    <Content Include="Views\customer\feedback.cshtml" />
     <Content Include="Views\customer\bookingdetails.cshtml" />
     <Content Include="Views\customer\Cancel.cshtml" />
     <Content Include="Views\Admin\ViewBookedCars.cshtml" />
