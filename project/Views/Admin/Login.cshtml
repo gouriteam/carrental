@@ -1,7 +1,4 @@
 ﻿
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -9,9 +6,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <link href="~/Contents/StyleSheet1.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
+    <div class="card">
         <form method="post">
             <table>
                 <tr>
@@ -28,9 +30,11 @@
                 </tr>
             </table>
         </form>
-    </div>
-    <div id="show" class="alert-danger" style=" color : red">
         <h4> @ViewData["a"]</h4>
     </div>
+
+
 </body>
 </html>
+
+

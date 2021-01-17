@@ -11,37 +11,44 @@
     <title>bookingdetails</title>
 </head>
 <body>
-        <div>
-            <table border="2px">
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+    <h1>Thank you for choosing LIVIGO!!!</h1>
+    <p>Your rides</p>
+    <div>
+        <table border="2px">
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-                        <tr>
-                            <td>@item.bookingid</td>
+                    <tr>
+                        <td>@item.bookingid</td>
 
-                            <td> @item.custid</td>
+                        <td> @item.custid</td>
 
-                            <td> @item.carid</td>
+                        <td> @item.carid</td>
 
-                            <td>@item.driverid</td>
 
-                            <td>@item.startdate</td>
 
-                            <td>@item.enddate</td>
+                        <td>@item.startdate</td>
 
-                            <td> @item.totalprice</td>
+                        <td>@item.enddate</td>
 
-                            <td> @item.fromroute</td>
+                        <td> @item.totalprice</td>
 
-                            <td> @item.toroute</td>
+                        <td> @item.fromroute</td>
 
-                            <td> @Html.ActionLink("Cancel", "Cancel")</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    
+                        <td> @item.toroute</td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <br /><br />
+        <input type="button" value="Print" onClick="window.print()">
+
+    </div>
+    @Html.ActionLink("Home", "Home")
+    @Html.ActionLink("profile", "profile")
+
 </body>
 </html>

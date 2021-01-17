@@ -34,7 +34,7 @@
             <div class="counter" data-target="60000">0</div>
             <h3>Subscribers</h3>
         </div>
-        </div>
+    </div>
 </section>
 <script src="javascript.js"></script>
 
@@ -44,3 +44,12 @@
 </form>
 <h5> No of Bookings Made by month : @TempData["nbymonth"] </h5>
 <br />
+
+@if (Session["user"] == null)
+{
+    @Html.ActionLink("Login", "Login")
+}
+else
+{
+    @Html.ActionLink("Logout", "Logout")
+}

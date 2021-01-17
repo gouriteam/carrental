@@ -105,10 +105,25 @@
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.js" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.min.js" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-grid.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-grid.min.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-reboot.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap.min.css" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.bundle.js" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.js" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.min.js" />
     <Content Include="Contents\JavaScript.js" />
     <Content Include="Contents\Jquery.js" />
     <Content Include="Contents\StyleSheet1.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\audi.jpg" />
+    <Content Include="images\BMW.jpg" />
+    <Content Include="images\rental.jpg" />
+    <Content Include="images\ritz.jpg" />
+    <Content Include="images\swift.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +148,16 @@
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js.map" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.js.map" />
     <Content Include="Contents\bootstrap-4.3.1-dist\js\bootstrap.min.js.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-grid.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\css\bootstrap.min.css.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.js.map" />
+    <Content Include="Contents\bootstrap-4.5.3-dist\js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\shared\Sitemaster1.cshtml" />
     <Content Include="Views\Admin\Homepage.cshtml" />
@@ -141,7 +166,6 @@
     <Content Include="Views\customer\vehicles.cshtml" />
     <Content Include="Views\customer\Book.cshtml" />
     <Content Include="Views\customer\profile.cshtml" />
-    <Content Include="Views\customer\Viewbooking.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\customer\CustomerHomepage.cshtml" />
     <Content Include="Views\customer\bookingdetails.cshtml" />
@@ -151,6 +175,11 @@
     <Content Include="Views\Admin\Editcars.cshtml" />
     <Content Include="Views\Admin\AddVehicle.cshtml" />
     <Content Include="Views\Admin\Allotdriver.cshtml" />
+    <Content Include="Views\customer\cardetails.cshtml" />
+    <Content Include="Views\customer\Editprofile.cshtml" />
+    <Content Include="Views\customer\Editbooking.cshtml" />
+    <Content Include="Views\shared\custmaster.cshtml" />
+    <Content Include="Views\customer\printbill.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,7 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

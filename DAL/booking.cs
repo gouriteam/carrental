@@ -26,7 +26,7 @@ namespace DAL
         public string driverid { get; set; }
         public DateTime startdate { get; set; }
         public DateTime enddate { get; set; }
-        public double totalprice { get; set; }
+        public Nullable<double> totalprice { get; set; }
         public string fromroute { get; set; }
         public string toroute { get; set; }
         public bool status { get; set; }

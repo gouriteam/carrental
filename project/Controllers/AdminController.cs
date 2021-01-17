@@ -127,7 +127,12 @@ namespace project.Controllers
             
             return View();
         }
-      
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Login");
+        }
+
         public ActionResult Login()
         {
             return View();
@@ -135,17 +140,13 @@ namespace project.Controllers
         [HttpPost]
         public ActionResult Login(string userid, string pwd)
         {
+           
             int res = ob.ValidateforAdmin( userid,  pwd);
             int res1 = ob.ValidateforCustomer(userid, pwd);
             if (res > 0)
             {
                 Session["user"] = userid;
                 return RedirectToAction("Homepage");
-            }
-            if (res1 > 0)
-            {
-                Session["user"] = userid;
-                return RedirectToAction("CustomerHomepage");
             }
             if (res1 > 0)
             {
@@ -164,12 +165,6 @@ namespace project.Controllers
         }
 
 
-
-        public ActionResult AddDriver()
-        public ActionResult k()
-        {
-            return View();
-        }
         [HttpPost]
         public ActionResult Allotdriver(string bookingid ,string carid, string driverid)
         {

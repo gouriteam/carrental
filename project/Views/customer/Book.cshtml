@@ -16,18 +16,7 @@
         <div>
             <p>Want to book a ride!!!</p>
             <table>
-                <tr>
-                    <td><label> Customer id</label></td>
-                    <td><input type="text" name="custid" /></td>
-                </tr>
-                <tr>
-                    <td><label> car id</label></td>
-                    <td><input type="text" name="carid" /></td>
-                </tr>
-                <tr>
-                    <td><label>driver id</label></td>
-                    <td><input type="text" name="driverid" /></td>
-                </tr>
+
                 <tr>
                     <td><label> Start-Date </label></td>
                     <td><input type="date" name="startdate" /></td>
@@ -37,18 +26,41 @@
                     <td><input type="date" name="enddate" /></td>
                 </tr>
                 <tr>
-                    <td><label> From-route </label></td>
-                    <td><input type="text" name="fromroute" /></td>
+
+
+                    <td><label for="routes">From-route</label></td>
+                    @*<td><input type="text" </td>*@
+                    <td><input list="fromroute" name="fromroute" id="fromroute"></td>
+
+                    <datalist id="fromroute">
+                        <option value="Bangalore">
+                        <option value="Mysore">
+                        <option value="Hydrabad">
+                        <option value="Delhi">
+                        <option value="Mumbai">
+                    </datalist>
+
                 </tr>
                 <tr>
-                    <td><label> To-route </label></td>
-                    <td><input type="text" name="toroute" /></td>
+
+                    <td><label for="route">To-route</label></td>
+                    <td><input list="toroute" name="toroute" id="toroute"></td>
+
+                    <datalist id="toroute">
+                        <option value="Bangalore">
+                        <option value="Mysore">
+                        <option value="Hydrabad">
+                        <option value="Delhi">
+                        <option value="Mumbai">
+                    </datalist>
                 </tr>
-                
+
                 <tr>
 
                     <td><input type="submit" value="submit" /></td>
                 </tr>
+
+
 
 
 
@@ -57,8 +69,10 @@
 
         </div>
     </form>
-        @ViewData["a"]
-   
+    @ViewData["a"]
+    @Html.ActionLink("Show & print Bill", "printbill")
+    @Html.ActionLink("Home", "Home")
+    @Html.ActionLink("profile", "profile")
 </body>
 </html>
 

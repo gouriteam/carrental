@@ -1,0 +1,66 @@
+﻿@model BusinessEntity.bookingBE
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editbooking</title>
+</head>
+<body>
+    <form method="post">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>bookingBE</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.bookingid, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bookingid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bookingid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.custid, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.custid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.custid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.carid, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.carid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.carid, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </form>
+    @ViewData["a"]
+    @Html.ActionLink("Home", "Home")
+    @Html.ActionLink("profile", "profile")
+</body>
+</html>

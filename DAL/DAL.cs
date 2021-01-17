@@ -39,28 +39,7 @@ namespace DAL
             return ob.SaveChanges();
 
         }
-        public int Adddriver(driverBE e)
-        {
-
-            string driveridd;
-            var lastdriv = ob.drivers.OrderByDescending(c => c.driverid).FirstOrDefault();
-            if (lastdriv == null)
-            {
-                driveridd = "DR10000";
-            }
-            else
-            {
-                driveridd = "DR" + (Convert.ToInt32(lastdriv.driverid.Substring(2, 5)) + 1).ToString();
-            }
-            driver k = new driver()
-            {
-                driverid = driveridd,
-                drivername = e.drivername,
-                phonenum = e.phonenum
-            };
-            ob.drivers.Add(k);
-            return ob.SaveChanges();
-        }
+        
 
         public int Adddriver(driverBE e)
         {
@@ -134,8 +113,8 @@ namespace DAL
                 {
                     carid = item.carid,
                     bookingid = item.bookingid,
-                    startdate = item.startdate,
-                    enddate = item.enddate,
+                    startdate = (DateTime)item.startdate,
+                    enddate = (DateTime)item.enddate,
                 });
             }
             return li;
@@ -161,18 +140,18 @@ namespace DAL
         }
 
 
-        public int newbooking(bookingBE b)
+        public int newbooking(bookingBE b,string carid)
         {
             
                 string bookingid;
                 var lastbooking = ob.bookings.OrderByDescending(c => c.bookingid).FirstOrDefault();
                 if (lastbooking == null)
                 {
-                    bookingid = "B00000";
+                    bookingid = "BD10000";
                 }
                 else
                 {
-                    bookingid = "B" + (Convert.ToInt32(lastbooking.bookingid.Substring(1, 5)) + 11111).ToString();
+                    bookingid = "BD" + (Convert.ToInt32(lastbooking.bookingid.Substring(2, 5)) + 1).ToString();
                 }
 
 
@@ -182,31 +161,64 @@ namespace DAL
             
 
             var price = from t in ob.vehicles
-                         where t.carid == b.carid
+                         where t.carid == carid
                          select t.rentperday;
-            var g = price.Single();
+            var g = price.SingleOrDefault();
             var n = g * o;
+            if (j > d)
+            {
 
-          
-            booking bi = new booking()
+                var k = ob.bookings.Where(c => c.custid == b.custid).Count();
+
+                if (k >= 3)
+                {
+                    var dis = n - (n * (0.3));
+                    booking bi = new booking()
+                    {
+
+                        bookingid = bookingid,
+                        custid = b.custid,
+                        carid = b.carid,
+                        startdate = b.startdate,
+                        enddate = b.enddate,
+                        totalprice = dis,
+                        fromroute = b.fromroute,
+                        toroute = b.toroute,
+                        status = true
+
+
+                    };
+                    ob.bookings.Add(bi);
+                }
+                else
                 {
 
-                    bookingid = bookingid,
-                    custid = b.custid,
-                    carid = b.carid,
-                    driverid = b.driverid,
-                    startdate = DateTime.Parse("01-01-2021"),
-                    enddate = DateTime.Parse("02-01-2021"),
-                    totalprice = n,
-                    fromroute = b.fromroute,
-                    toroute = b.toroute,
-                    status = true
+                    booking bi = new booking()
+                    {
+
+                        bookingid = bookingid,
+                        custid = b.custid,
+                        carid = b.carid,
+
+                        startdate = b.startdate,
+                        enddate = b.enddate,
+                        totalprice = n,
+                        fromroute = b.fromroute,
+                        toroute = b.toroute,
+                        status = true
 
 
-                };
-                ob.bookings.Add(bi);
+                    };
+                    ob.bookings.Add(bi);
+
+                }
+
                 return ob.SaveChanges();
-         
+            }
+            else
+            {
+                return -1;
+            }
             
 
         }
@@ -221,30 +233,17 @@ namespace DAL
             foreach (var item in res)
             {
 
-                A.Add(new VehiclesBE() { carid = item.carid, model = item.model, capacity = item.capacity, ACtype = item.ACtype, rentperday = item.rentperday, fuelmode = item.fuelmode, images = item.images, available = item.available });
+                A.Add(new VehiclesBE() { carid = item.carid, model = item.model, capacity = (int)item.capacity, ACtype = item.ACtype, rentperday = (double)item.rentperday, fuelmode = item.fuelmode, images = item.images, available = item.available });
             }
             return A;
 
         }
 
-        public int Viewbooking(string custid)
-        {
-            var res = (from t in ob.bookings
-                       where t.custid == custid
-                       select t).Count();
-            if (res > 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
+       
         public List<bookingBE> bookingdetails(string custid)
         {
            
-            string custid = "a";
+            
             var res = from t in ob.bookings
                       where t.custid == custid
                       select t;
@@ -258,7 +257,7 @@ namespace DAL
                     bookingid = item.bookingid,
                     custid = item.custid,
                     carid = item.carid,
-                    driverid = item.driverid,
+                   
                     startdate = (DateTime)item.startdate,
                     enddate = (DateTime)item.enddate,
                     totalprice = (double)item.totalprice,
@@ -269,6 +268,155 @@ namespace DAL
             }
             return A;
         }
+
+
+
+
+        public int Editprofile(CustomerBE c,string custid)
+        {
+            var res = from t in ob.registrations
+                      where t.custid == custid
+                      select t;
+            if (res.Count() > 0)
+            {
+                (from t in ob.registrations
+                 where t.custid == custid
+                 select t).ToList().ForEach(
+                    e =>
+                    {
+                        e.custname = c.custname;
+                        e.pwd = c.pwd;
+                        e.email = c.email;
+                        e.phonenum = c.phonenum;
+                    });
+                    return ob.SaveChanges();
+
+
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int Editbooking(bookingBE b)
+        {
+            var l = from t in ob.bookings
+                    where t.bookingid == b.bookingid
+                    select t.startdate;
+
+            DateTime d = l.SingleOrDefault();
+            DateTime j = DateTime.Now.Date;
+            var o = (d - j).TotalDays;
+
+            var res = from t in ob.bookings
+                      where t.bookingid == b.bookingid
+                      select t;
+            if (res.Count() > 0)
+            {
+                if (o >= 1)
+                {
+                    (from t in ob.bookings
+                     where t.bookingid == b.bookingid
+                     select t).ToList().ForEach(
+                        e =>
+                        {
+                            e.custid = b.custid;
+
+                            e.carid = b.carid;
+
+                        });
+                }
+                else
+                {
+                    return -1;
+                }
+                return ob.SaveChanges();
+
+
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int Cancel(bookingBE b,string bookingid)
+        {
+            var l = from t in ob.bookings
+                    where t.bookingid == bookingid
+                    select t.startdate;
+
+            DateTime d = l.SingleOrDefault();
+            DateTime j = DateTime.Now.Date;
+            var o = (d - j).TotalDays;
+            //var o = 1;
+
+            //var price = from t in ob.vehicles
+            //            where t.carid == b.carid
+            //            select t.rentperday;
+
+            var price = from t in ob.vehicles
+                        from v in ob.bookings
+                        where v.bookingid == bookingid && v.carid==t.carid
+                        select t.rentperday;
+
+            var g = price.SingleOrDefault();
+            var n = g * o;
+
+            var tot =  n*0.15;
+
+            var res = ob.bookings.Where(t => t.bookingid == bookingid);
+
+            if (o <= 1)
+            {
+                foreach (var item in res)
+                {
+                    item.totalprice = tot;
+                    item.status = false;
+                }
+                
+            }
+
+            else
+            {
+                foreach (var item in res)
+                {
+                    item.status = false;
+                }
+
+                
+            }
+            return ob.SaveChanges();
+            
+
+
+        }
+
+        public List<VehiclesBE> cardetails(string custid)
+        {
+
+
+            //var res = from t in ob.bookings
+            //          where t.custid == custid
+            //          select t;
+
+            var res = from t in ob.vehicles
+                       from c in ob.bookings
+                       where c.custid == custid && c.carid== t.carid
+                       select t;
+            List<VehiclesBE> A = new List<VehiclesBE>();
+
+            foreach (var item in res)
+            {
+                 
+               A.Add(new VehiclesBE() { carid = item.carid, model = item.model, images = item.images, rentperday = item.rentperday });
+            }
+            return A;
+           
+        }
+
+
 
         public int ValidateAdmin(string userid, string pwd)
         {
@@ -296,53 +444,7 @@ namespace DAL
             {
                 return 0;
             }
-
-        //public int Edit(CustomerBE c)
-        //{
-        //    var res = from t in ob.registrations
-        //              where t.custid == c.custid
-        //              select t;
-        //    if(res.Count()>0)
-        //    {
-        //        (from t inob.registrations
-        //         where testc.custid==c.custid
-        //         select t).ToList().ForEach(
-        //            e=>
-        //            {
-        //                e.
-        //            }
-        //            )
-        //    }
-        //}
-
-        public int Cancel(string bookingid)
-        {
-
-            var res = ob.bookings.Where(t => t.bookingid == bookingid);
-            if (res.Count() > 0)
-            {
-                foreach (var item in res)
-                {
-                    item.status = false;
-                }
-                ob.SaveChanges();
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
         }
-    if (res > 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-        }
-
 
         public int Editcars(VehiclesBE a)
         {
@@ -371,21 +473,8 @@ namespace DAL
                 return 0;
             }
 
-}
-        public int ValidateAdmin(string userid, string pwd)
-            //var res = (from x in ob.admins where x.adminid == id select x).Count();
-            //var res1 = (from x in ob.registrations where x.custid == id select x).Count();
-
-            ////if (res > 0 || res1>0)
-            //{
-            //    return 0;
-            //}
-            //else
-            //{
-            //    return 1;
-            //}
-
         }
+       
         public int Allotdriver(string bookingid, string carid, string driverid)
         {
             var res = from t in ob.bookings
@@ -403,15 +492,15 @@ namespace DAL
             DateTime e1 = DateTime.Parse("4-1-2010");
             foreach (var item in res1)
             {
-                s = item.startdate;
-                e = item.enddate;
+                s = (DateTime)item.startdate;
+                e = (DateTime)item.enddate;
             }
 
 
             foreach (var item in res1)
             {
-                s1 = item.startdate;
-                e1 = item.enddate;
+                s1 = (DateTime)item.startdate;
+                e1 = (DateTime)item.enddate;
             }
             if (s > s1 && s > e1)
             {
@@ -433,9 +522,7 @@ namespace DAL
             }
 
         }
-        public int ValidateforCustomer(string userid, string pwd)
-        {
-            var res1 = (from x in ob.registrations where x.custname == userid & x.pwd == pwd select x).Count();
+     
         public int nofcars()
         {
             var r = (from t in ob.vehicles
@@ -483,33 +570,8 @@ namespace DAL
             return r;
         }
 
-            if (res1>0)
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-
-        }
 
 
-        public int Validateforid(string id)
-        {
-            var res = (from x in ob.admins where x.adminid == id select x).Count();
-            var res1 = (from x in ob.registrations where x.custid == id select x).Count();
-
-            if (res > 0 || res1 > 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-
-        }
 
         public int Registration(CustomerBE s)
         {
@@ -530,32 +592,35 @@ namespace DAL
 
              return ob.SaveChanges();
         }
+        public List<bookingBE> printbill(string bookingid)
+        {
+            var res = ob.bookings.OrderByDescending(c => c.bookingid).FirstOrDefault();
+            List<bookingBE> A = new List<bookingBE>();
+
+
+                A.Add(new bookingBE()
+                {
+                    bookingid = res.bookingid,
+                    custid = res.custid,
+                    carid = res.carid,
+
+                    startdate = (DateTime)res.startdate,
+                    enddate = (DateTime)res.enddate,
+                    totalprice = (double)res.totalprice,
+                    fromroute = res.fromroute,
+                    toroute = res.toroute,
+          
+                });
+     
+            return A;
+        }
+
+
+
 
     }
 
 
 
 }
-            public int Registration(CustomerBE s)
-
-            {
-
-
-
-
-                 string custid;
-                 var lastcus = ob.registrations.OrderByDescending(c => c.custid).FirstOrDefault();
-                if (lastcus == null)
-                 {
-                        custid = "CH1234";
-                  }
-               else
-              {
-                  custid = "CH" + (Convert.ToInt32(lastcus.custid.Substring(2, 4)) + 1).ToString();
-               }
-                      registration st = new registration() { custid = custid, custname = s.custname, gender = s.gender, pwd = s.pwd, DOB = s.DOB, phonenum = s.phonenum, email = s.email };
-                     ob.registrations.Add(st);
-                     return ob.SaveChanges();
-                }
-    }
-}
+       

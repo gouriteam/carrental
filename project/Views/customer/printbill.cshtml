@@ -1,0 +1,89 @@
+﻿@model IEnumerable<BusinessEntity.bookingBE>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>printbill</title>
+</head>
+<body>
+
+    <h1>Thank you for choosing LIVIGO!!!</h1>
+    <p>Ride Details</p>
+    <table class="table" border="2px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bookingid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.custid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carid)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.startdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.enddate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.totalprice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fromroute)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.toroute)
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bookingid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.custid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.carid)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.startdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.enddate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.totalprice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fromroute)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.toroute)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <input type="button" value="Print BIll" onClick="window.print()">
+
+    @Html.ActionLink("New Booking", "Book")
+    @Html.ActionLink("Home", "Home")
+    @Html.ActionLink("profile", "profile")
+</body>
+</html>

@@ -28,12 +28,12 @@
             
                 <td>@item.fuelmode</td>
           
-                <td>@item.images</td>
+                <td><img src="~/@item.images" /></td>
            
                 <td>@item.available</td>
             
 
-                <td> @Html.ActionLink("Book", "Book")</td>
+                <td> @Html.ActionLink("Book", "Book", new { carid = item.carid }) </td>
 
             </tr>
 

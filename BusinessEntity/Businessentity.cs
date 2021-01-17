@@ -37,6 +37,7 @@ namespace BusinessEntity
         public string custid { get; set; }
         public string carid { get; set; }
         public string driverid { get; set; }
+
         public DateTime startdate { get; set; }
         public DateTime enddate { get; set; }
         public double totalprice { get; set; }

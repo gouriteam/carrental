@@ -15,25 +15,40 @@ namespace Blogic
         {
             return ob.Addcar(a);
         }
-        public int newbooking(bookingBE b)
+        public int newbooking(bookingBE b,string carid)
         {
-            return ob.newbooking(b);
+            return ob.newbooking(b,carid);
         }
         public List<VehiclesBE> Vehicles()
         {
             return ob.Vehicles();
         }
-        public int Viewbooking(string custid)
-        {
-            return ob.Viewbooking(custid);
-        }
+       
         public List<bookingBE> bookingdetails(string custid)
         {
             return ob.bookingdetails(custid);
         }
-        public int Cancel(string bookingid)
+
+       
+
+        public List<VehiclesBE> cardetails(string custid)
         {
-            return ob.Cancel(bookingid);
+            return ob.cardetails(custid);
+        }
+
+            public int Cancel(bookingBE b, string bookingid)
+        {
+            return ob.Cancel(b,bookingid);
+        }
+
+        public int Editprofile(CustomerBE c,string custid)
+        {
+            return ob.Editprofile(c,custid);
+        }
+
+        public int Editbooking(bookingBE b)
+        {
+            return ob.Editbooking(b);
         }
 
 
@@ -51,14 +66,6 @@ namespace Blogic
             return ob.ValidateforCustomer(userid, pwd);
         }
 
-        public int Validateforid(string id)
-        {
-            return ob.Validateforid(id);
-        }
-        public int ValidateforCustomer(string userid, string pwd)
-        {
-            return ob.ValidateforCustomer(userid, pwd);
-        }
 
         public int Registration(CustomerBE s)
         {
@@ -107,7 +114,11 @@ namespace Blogic
         }
         public int nbymonth(string Month)
         {
-            return ob.nbymonth(Month);
+           return ob.nbymonth(Month);
+        }
+        public List<bookingBE> printbill(string bookingid)
+        {
+            return ob.printbill(bookingid);
         }
     }
 }

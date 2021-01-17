@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BusinessEntity.VehiclesBE>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>vehicles</title>
+</head>
+<body>
+    <div>
+        <table border="2px">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.carid</td>
+
+                    <td>  <img src="~/@item.images" /> </td>
+
+                    <td>@item.model </td>
+
+                    <td>@item.rentperday </td>
+                </tr>
+
+                   
+
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
